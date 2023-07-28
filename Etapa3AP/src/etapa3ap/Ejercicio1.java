@@ -36,6 +36,11 @@ public class Ejercicio1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnRegistrar.setLabel("Registrar");
+        btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseClicked(evt);
+            }
+        });
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -70,13 +75,17 @@ public class Ejercicio1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        if(tFUsuario.getText().equals("alumno@ulp.edu.ar") && jPFPassword.getText().equals("12345678")){
-            JOptionPane.showMessageDialog(rootPane, "Bienvenido " +tFUsuario.getText());
-        
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos");
-        }
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
+        if (tFUsuario.getText().equals("alumno@ulp.edu.ar") && jPFPassword.getText().equals("12345678")) {
+            JOptionPane.showMessageDialog(rootPane, "Bienvenido " + tFUsuario.getText());
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarMouseClicked
 
     /**
      * @param args the command line arguments
