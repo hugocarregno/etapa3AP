@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package etapa3ap;
+package Vista;
 
 import javax.swing.JOptionPane;
 

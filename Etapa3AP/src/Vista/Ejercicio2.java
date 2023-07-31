@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package etapa3ap;
+package Vista;
 
 import javax.swing.JOptionPane;
 
@@ -67,7 +67,7 @@ public class Ejercicio2 extends javax.swing.JFrame {
 
     private void jBConvertirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBConvertirMouseClicked
     if(!this.tFConversor.getText().isEmpty() && Integer.valueOf(this.tFConversor.getText())>0){
-        double fahrenheit = Integer.valueOf(this.tFConversor.getText()) * 9/5 + 32;
+        double fahrenheit = Double.valueOf(this.tFConversor.getText()) * 9/5 + 32;
         JOptionPane.showMessageDialog(rootPane, "Son °"+fahrenheit+" Fahrenheit");
     }
     }//GEN-LAST:event_jBConvertirMouseClicked
