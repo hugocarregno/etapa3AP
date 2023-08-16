@@ -13,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Hugo
  */
 public class ifrmConsultaPorPrecio extends javax.swing.JInternalFrame {
-public DefaultTableModel model = new DefaultTableModel(); //declaro para manipular la tabla
+
+    public DefaultTableModel model = new DefaultTableModel(); //declaro para manipular la tabla
+
     /**
      * Creates new form ifrmConsultaPorPrecio
      */
@@ -135,33 +137,49 @@ public DefaultTableModel model = new DefaultTableModel(); //declaro para manipul
 
     private void txtMinimoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinimoKeyReleased
         eliminarFilas();
-        if(!(this.txtMinimo.getText().isEmpty()) && this.txtMaximo.getText().isEmpty()){
+        if (!(this.txtMinimo.getText().isEmpty()) && this.txtMaximo.getText().isEmpty()) {
             //buscara el minimo
-            for(Producto p: Ejercicio4.productos){
-            if(p.getPrecio()>=Double.valueOf(this.txtMinimo.getText())){
-                model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+            for (Producto p : Ejercicio4.productos) {
+                if (p.getPrecio() >= Double.valueOf(this.txtMinimo.getText())) {
+                    model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+                }
             }
         }
+          if (!this.txtMinimo.getText().isEmpty() && !this.txtMaximo.getText().isEmpty()) {
+            //buscara entre valores
+            for (Producto p : Ejercicio4.productos) {
+                if (p.getPrecio() >= Double.valueOf(this.txtMinimo.getText()) && p.getPrecio() <= Double.valueOf(this.txtMaximo.getText())) {
+                    model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+                }
+            }
         }
     }//GEN-LAST:event_txtMinimoKeyReleased
 
     private void txtMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaximoActionPerformed
-        
+
     }//GEN-LAST:event_txtMaximoActionPerformed
 
     private void txtMaximoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaximoKeyReleased
         eliminarFilas();
-        if(!(this.txtMaximo.getText().isEmpty()) && this.txtMinimo.getText().isEmpty()){
+        if (!(this.txtMaximo.getText().isEmpty()) && this.txtMinimo.getText().isEmpty()) {
             //buscara el maximo
-            for(Producto p: Ejercicio4.productos){
-            if(p.getPrecio()<=Double.valueOf(this.txtMaximo.getText())){
-                model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+            for (Producto p : Ejercicio4.productos) {
+                if (p.getPrecio() <= Double.valueOf(this.txtMaximo.getText())) {
+                    model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+                }
             }
         }
+        if (!this.txtMaximo.getText().isEmpty() && !this.txtMinimo.getText().isEmpty()) {
+            //buscara entre valores
+            for (Producto p : Ejercicio4.productos) {
+                if (p.getPrecio() >= Double.valueOf(this.txtMinimo.getText()) && p.getPrecio() <= Double.valueOf(this.txtMaximo.getText())) {
+                    model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+                }
+            }
         }
     }//GEN-LAST:event_txtMaximoKeyReleased
 
-public void eliminarFilas() {
+    public void eliminarFilas() {
         while (model.getRowCount() > 0) {
             int i = model.getRowCount();
             model.removeRow(i - 1);
