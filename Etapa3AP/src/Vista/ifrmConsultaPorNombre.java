@@ -13,13 +13,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ifrmConsultaPorNombre extends javax.swing.JInternalFrame {
 
-    public DefaultTableModel model = new DefaultTableModel(); //declaro para manipular la tabla
+    public DefaultTableModel model;
     /**
      * Creates new form ifrmBusquedaPorNombre
      */
     public ifrmConsultaPorNombre() {
         initComponents();
-        model = (DefaultTableModel) this.tblProductos.getModel(); //manipulo la tabla generada por interfaz
+        model = (DefaultTableModel) this.tblProductos.getModel();
+        Ejercicio4.productos.forEach(this::cargarTabla);
     }
 
     /**
@@ -40,15 +41,11 @@ public class ifrmConsultaPorNombre extends javax.swing.JInternalFrame {
         setClosable(true);
 
         lblListadoPorNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblListadoPorNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblListadoPorNombre.setText("Listado por Nombre");
 
         jLabel1.setText("Escriba los primeros caracteres:");
 
-        txtBuscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscadorActionPerformed(evt);
-            }
-        });
         txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscadorKeyReleased(evt);
@@ -80,56 +77,63 @@ public class ifrmConsultaPorNombre extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(lblListadoPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscador)))
+                        .addComponent(txtBuscador))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131)
+                .addComponent(lblListadoPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(lblListadoPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscadorActionPerformed
-
     private void txtBuscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyReleased
         eliminarFilas();
-        for(Producto p: Ejercicio4.productos){
-            if(p.getDescripcion().startsWith(this.txtBuscador.getText())){
-                model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
-            }
-        }
+        Ejercicio4.productos.stream()
+            .filter(p-> p.getDescripcion().toLowerCase()
+            .startsWith(txtBuscador.getText().toLowerCase()))
+            .forEach(this::cargarTabla);
     }//GEN-LAST:event_txtBuscadorKeyReleased
 
-    public void eliminarFilas() {
+    private void eliminarFilas() {
         while (model.getRowCount() > 0) {
             int i = model.getRowCount();
             model.removeRow(i - 1);
         }
     }
+    
+    private void cargarTabla(Producto p){
+        model.addRow(new Object[]{p.getCodigo(),p.getDescripcion(),p.getPrecio(),p.getStock()});
+    }
+    
+    /*
+    eliminarFilas();
+        for(Producto p: Ejercicio4.productos){
+            if(p.getDescripcion().startsWith(this.txtBuscador.getText())){
+                model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
+            }
+        }
+    
+    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

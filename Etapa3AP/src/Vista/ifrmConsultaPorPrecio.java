@@ -13,13 +13,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Hugo
  */
 public class ifrmConsultaPorPrecio extends javax.swing.JInternalFrame {
-public DefaultTableModel model = new DefaultTableModel(); //declaro para manipular la tabla
+    
+public DefaultTableModel model; //declaro para manipular la tabla
     /**
      * Creates new form ifrmConsultaPorPrecio
      */
     public ifrmConsultaPorPrecio() {
         initComponents();
         model = (DefaultTableModel) this.tblProductos.getModel(); //manipulo la tabla generada por interfaz
+        Ejercicio4.productos.forEach(this::cargarTabla);
     }
 
     /**
@@ -40,32 +42,30 @@ public DefaultTableModel model = new DefaultTableModel(); //declaro para manipul
         tblProductos = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Listado Por Precio");
 
         jLabel2.setText("Entre $:");
 
-        txtMinimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMinimoActionPerformed(evt);
-            }
-        });
         txtMinimo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMinimoKeyReleased(evt);
             }
-        });
-
-        txtMaximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaximoActionPerformed(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMinimoKeyTyped(evt);
             }
         });
+
         txtMaximo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaximoKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaximoKeyTyped(evt);
+            }
         });
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText(" y ");
 
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,80 +93,93 @@ public DefaultTableModel model = new DefaultTableModel(); //declaro para manipul
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54))))
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMinimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMinimoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMinimoActionPerformed
-
     private void txtMinimoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinimoKeyReleased
         eliminarFilas();
-        if(!(this.txtMinimo.getText().isEmpty()) && this.txtMaximo.getText().isEmpty()){
-            //buscara el minimo
-            for(Producto p: Ejercicio4.productos){
-            if(p.getPrecio()>=Double.valueOf(this.txtMinimo.getText())){
-                model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
-            }
-        }
+        if(!(txtMinimo.getText().isEmpty()) && txtMaximo.getText().isEmpty()){
+            Ejercicio4.productos.stream()
+            .filter(p-> p.getPrecio() >= Double.valueOf(txtMinimo.getText()))
+            .forEach(this::cargarTabla);
+        } else if (!txtMaximo.getText().isEmpty() && !txtMinimo.getText().isEmpty()){
+            entre();
         }
     }//GEN-LAST:event_txtMinimoKeyReleased
 
-    private void txtMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaximoActionPerformed
-        
-    }//GEN-LAST:event_txtMaximoActionPerformed
-
     private void txtMaximoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaximoKeyReleased
         eliminarFilas();
-        if(!(this.txtMaximo.getText().isEmpty()) && this.txtMinimo.getText().isEmpty()){
-            //buscara el maximo
-            for(Producto p: Ejercicio4.productos){
-            if(p.getPrecio()<=Double.valueOf(this.txtMaximo.getText())){
-                model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
-            }
-        }
+        if(!txtMaximo.getText().isEmpty() && txtMinimo.getText().isEmpty()){
+            Ejercicio4.productos.stream()
+            .filter(p-> p.getPrecio() <= Double.valueOf(txtMaximo.getText()))
+            .forEach(this::cargarTabla);
+        } else if (!txtMaximo.getText().isEmpty() && !txtMinimo.getText().isEmpty()){
+            entre();
         }
     }//GEN-LAST:event_txtMaximoKeyReleased
 
-public void eliminarFilas() {
+    private void txtMinimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinimoKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()) && evt.getKeyChar() != '.'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMinimoKeyTyped
+
+    private void txtMaximoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaximoKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()) && evt.getKeyChar() != '.'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMaximoKeyTyped
+
+    private void eliminarFilas() {
         while (model.getRowCount() > 0) {
             int i = model.getRowCount();
             model.removeRow(i - 1);
         }
     }
+    
+    private void entre(){
+        eliminarFilas();
+        Ejercicio4.productos.stream()
+            .filter(p-> p.getPrecio() <= Double.valueOf(txtMaximo.getText()) &&
+                    p.getPrecio() >= Double.valueOf(txtMinimo.getText()))
+            .forEach(this::cargarTabla);
+    }
+    
+    private void cargarTabla(Producto p){
+        model.addRow(new Object[]{p.getCodigo(),p.getDescripcion(),p.getPrecio(),p.getStock()});
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

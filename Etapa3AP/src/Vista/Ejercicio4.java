@@ -42,25 +42,24 @@ public class Ejercicio4 extends javax.swing.JFrame {
         mniPorPrecio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1240, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 725, Short.MAX_VALUE)
         );
 
         mnuAdministracion.setText("Administración");
 
         mniProductos.setText("Productos");
-        mniProductos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mniProductosMouseClicked(evt);
+        mniProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniProductosActionPerformed(evt);
             }
         });
         mnuAdministracion.add(mniProductos);
@@ -70,14 +69,14 @@ public class Ejercicio4 extends javax.swing.JFrame {
         mnuConsultas.setText("Consultas");
 
         mniPorRubro.setText("Por Rubro");
+        mniPorRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniPorRubroActionPerformed(evt);
+            }
+        });
         mnuConsultas.add(mniPorRubro);
 
         mniPorNombre.setText("Por Nombre");
-        mniPorNombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mniPorNombreMouseClicked(evt);
-            }
-        });
         mniPorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mniPorNombreActionPerformed(evt);
@@ -111,37 +110,40 @@ public class Ejercicio4 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mniProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniProductosMouseClicked
-    //this.escritorio.add(this.jInternalFrame1);
-    
-    //this.jInternalFrame1.setVisible(true);
-    
-       
-    }//GEN-LAST:event_mniProductosMouseClicked
-
-    private void mniPorNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniPorNombreMouseClicked
-
-    }//GEN-LAST:event_mniPorNombreMouseClicked
-
     private void mniPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPorNombreActionPerformed
-    this.escritorio.removeAll();
-    this.escritorio.repaint();
-    ifrmConsultaPorNombre cpn = new ifrmConsultaPorNombre();
+        this.escritorio.removeAll();
+        this.escritorio.repaint();
+        ifrmConsultaPorNombre cpn = new ifrmConsultaPorNombre();
 
-    cpn.setVisible(true);
-    this.escritorio.add(cpn);
-    this.escritorio.moveToFront(cpn);        
+        cpn.setVisible(true);
+        this.escritorio.add(cpn);
+        this.escritorio.moveToFront(cpn);        
     }//GEN-LAST:event_mniPorNombreActionPerformed
 
     private void mniPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPorPrecioActionPerformed
-            this.escritorio.removeAll();
-    this.escritorio.repaint();
-    ifrmConsultaPorPrecio cpp = new ifrmConsultaPorPrecio();
-
-    cpp.setVisible(true);
-    this.escritorio.add(cpp);
-    this.escritorio.moveToFront(cpp);  
+        this.escritorio.removeAll();
+        this.escritorio.repaint();
+        ifrmConsultaPorPrecio cpp = new ifrmConsultaPorPrecio();
+        cpp.setVisible(true);
+        this.escritorio.add(cpp);
+        this.escritorio.moveToFront(cpp);  
     }//GEN-LAST:event_mniPorPrecioActionPerformed
+
+    private void mniProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniProductosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ifrmGestionDeProductos gdp = new ifrmGestionDeProductos();
+        gdp.setVisible(true);
+        escritorio.add(gdp);
+    }//GEN-LAST:event_mniProductosActionPerformed
+
+    private void mniPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPorRubroActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ifrmConsultaPorRubro cpr = new ifrmConsultaPorRubro();
+        cpr.setVisible(true);
+        escritorio.add(cpr);
+    }//GEN-LAST:event_mniPorRubroActionPerformed
 
     /**
      * @param args the command line arguments
