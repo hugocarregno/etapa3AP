@@ -14,7 +14,9 @@ import java.util.TreeSet;
  * @author Hugo
  */
 public class Ejercicio4 extends javax.swing.JFrame {
+
     public static TreeSet<Producto> productos = new TreeSet<>();
+
     /**
      * Creates new form Ejercicio4
      */
@@ -70,6 +72,11 @@ public class Ejercicio4 extends javax.swing.JFrame {
         mnuConsultas.setText("Consultas");
 
         mniPorRubro.setText("Por Rubro");
+        mniPorRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniPorRubroActionPerformed(evt);
+            }
+        });
         mnuConsultas.add(mniPorRubro);
 
         mniPorNombre.setText("Por Nombre");
@@ -112,11 +119,10 @@ public class Ejercicio4 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniProductosMouseClicked
-    //this.escritorio.add(this.jInternalFrame1);
-    
-    //this.jInternalFrame1.setVisible(true);
-    
-       
+        //this.escritorio.add(this.jInternalFrame1);
+
+        //this.jInternalFrame1.setVisible(true);
+
     }//GEN-LAST:event_mniProductosMouseClicked
 
     private void mniPorNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniPorNombreMouseClicked
@@ -124,24 +130,34 @@ public class Ejercicio4 extends javax.swing.JFrame {
     }//GEN-LAST:event_mniPorNombreMouseClicked
 
     private void mniPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPorNombreActionPerformed
-    this.escritorio.removeAll();
-    this.escritorio.repaint();
-    ifrmConsultaPorNombre cpn = new ifrmConsultaPorNombre();
+        this.escritorio.removeAll();
+        this.escritorio.repaint();
+        ifrmConsultaPorNombre cpn = new ifrmConsultaPorNombre();
 
-    cpn.setVisible(true);
-    this.escritorio.add(cpn);
-    this.escritorio.moveToFront(cpn);        
+        cpn.setVisible(true);
+        this.escritorio.add(cpn);
+        this.escritorio.moveToFront(cpn);
     }//GEN-LAST:event_mniPorNombreActionPerformed
 
     private void mniPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPorPrecioActionPerformed
-            this.escritorio.removeAll();
-    this.escritorio.repaint();
-    ifrmConsultaPorPrecio cpp = new ifrmConsultaPorPrecio();
+        this.escritorio.removeAll();
+        this.escritorio.repaint();
+        ifrmConsultaPorPrecio cpp = new ifrmConsultaPorPrecio();
 
-    cpp.setVisible(true);
-    this.escritorio.add(cpp);
-    this.escritorio.moveToFront(cpp);  
+        cpp.setVisible(true);
+        this.escritorio.add(cpp);
+        this.escritorio.moveToFront(cpp);
     }//GEN-LAST:event_mniPorPrecioActionPerformed
+
+    private void mniPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPorRubroActionPerformed
+        this.escritorio.removeAll();
+        this.escritorio.repaint();
+        ifrmConsultaPorRubro cpr = new ifrmConsultaPorRubro();
+
+        cpr.setVisible(true);
+        this.escritorio.add(cpr);
+        this.escritorio.moveToFront(cpr);
+    }//GEN-LAST:event_mniPorRubroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,9 +204,9 @@ public class Ejercicio4 extends javax.swing.JFrame {
     private javax.swing.JMenu mnuAdministracion;
     private javax.swing.JMenu mnuConsultas;
     // End of variables declaration//GEN-END:variables
-    private void getProductos(){
-        productos.add(new Producto(10,"Azucar 1 kg",180.75,5,Categoria.COMESTIBLE));
+    private void getProductos() {
+        productos.add(new Producto(10, "Azucar 1 kg", 180.75, 5, Categoria.COMESTIBLE));
         productos.add(new Producto(12, "Yerba mate", 850, 10, Categoria.COMESTIBLE));
-        productos.add(new Producto(5, "Aceite de girasol",250,5,Categoria.COMESTIBLE));
+        productos.add(new Producto(5, "Aceite de girasol", 250, 5, Categoria.COMESTIBLE));
     }
 }

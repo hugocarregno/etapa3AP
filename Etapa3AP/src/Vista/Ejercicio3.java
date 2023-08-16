@@ -26,7 +26,6 @@ public class Ejercicio3 extends javax.swing.JFrame {
     public Ejercicio3() {
         initComponents();
         model = (DefaultTableModel) this.tblArticulos.getModel(); //manipulo la tabla generada por interfaz
-        //articulos = new ArrayList<>();
         articulos = new HashSet<>();
     }
 
