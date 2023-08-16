@@ -14,13 +14,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ifrmConsultaPorPrecio extends javax.swing.JInternalFrame {
     
-public DefaultTableModel model; //declaro para manipular la tabla
+public DefaultTableModel model;
     /**
      * Creates new form ifrmConsultaPorPrecio
      */
     public ifrmConsultaPorPrecio() {
         initComponents();
-        model = (DefaultTableModel) this.tblProductos.getModel(); //manipulo la tabla generada por interfaz
+        model = (DefaultTableModel) this.tblProductos.getModel();
         Ejercicio4.productos.forEach(this::cargarTabla);
     }
 
