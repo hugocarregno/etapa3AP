@@ -65,6 +65,11 @@ public class Ejercicio4 extends javax.swing.JFrame {
                 mniProductosMouseClicked(evt);
             }
         });
+        mniProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniProductosActionPerformed(evt);
+            }
+        });
         mnuAdministracion.add(mniProductos);
 
         jMenuBar1.add(mnuAdministracion);
@@ -158,6 +163,16 @@ public class Ejercicio4 extends javax.swing.JFrame {
         this.escritorio.add(cpr);
         this.escritorio.moveToFront(cpr);
     }//GEN-LAST:event_mniPorRubroActionPerformed
+
+    private void mniProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniProductosActionPerformed
+        this.escritorio.removeAll();
+        this.escritorio.repaint();
+        ifrmGestionDeProductos gdp = new ifrmGestionDeProductos();
+
+        gdp.setVisible(true);
+        this.escritorio.add(gdp);
+        this.escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_mniProductosActionPerformed
 
     /**
      * @param args the command line arguments
