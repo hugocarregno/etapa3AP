@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 public class Ejercicio3 extends javax.swing.JFrame {
 
     public DefaultTableModel model = new DefaultTableModel(); //declaro para manipular la tabla
-    //public ArrayList<Articulo> articulos;
     public HashSet<Articulo> articulos;
     /**
      * Creates new form Ejercicio3
@@ -187,18 +186,12 @@ public class Ejercicio3 extends javax.swing.JFrame {
 
     private void tfPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPrecioKeyTyped
     int key = evt.getKeyChar();
-
     boolean numeros = key >= 48 && key <= 57;
     boolean punto = key == 46;    
     if (!(numeros | punto))
     {
         evt.consume();
     }
-    //if(punto){
-    //    evt.consume();
-    //}
-
-           // TODO add your handling code here:
     }//GEN-LAST:event_tfPrecioKeyTyped
     public void cargarDatosSegunCategoria() {
         for (Articulo art : articulos) {
