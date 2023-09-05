@@ -9,7 +9,6 @@ import Modelo.Tarea;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +18,7 @@ import javax.swing.JOptionPane;
 public class EjercicioExtra1 extends javax.swing.JFrame {
 
     private List<Tarea> tareas;
-    private DefaultListModel<Tarea> pendienteListaModelo = new DefaultListModel<>();
-    ; //declaro para manipular la lista
+    private DefaultListModel<Tarea> pendienteListaModelo = new DefaultListModel<>(); //declaro para manipular la lista
     private DefaultListModel<Tarea> completaListaModelo = new DefaultListModel<>();
 
     ; //declaro para manipular la lista

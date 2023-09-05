@@ -6,9 +6,6 @@
 package Vista;
 
 import Modelo.Contacto;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.TreeSet;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -19,15 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class EjercicioExtra2 extends javax.swing.JFrame {
 
-    private HashSet<Contacto> contactos;
+    private TreeSet<Contacto> contactos;
     private DefaultListModel<Contacto> contactoListaModelo = new DefaultListModel<>();
+    public int cantidadContactos=0;
 
     /**
      * Creates new form EjercicioExtra2
      */
     public EjercicioExtra2() {
         initComponents();
-        contactos = new HashSet<>();
+        contactos = new TreeSet<>();
         this.lstContactos.setModel(contactoListaModelo);
     }
 
@@ -171,15 +169,27 @@ public class EjercicioExtra2 extends javax.swing.JFrame {
         String nombre = this.txtNombre.getText();
         String tel = this.txtTelefono.getText();
         String correo = this.txtCorreo.getText();
-        if (nombre.isEmpty() || tel.isEmpty() || correo.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Los campos no deben estar vacios");
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "El nombre no debe estar vacio");
+            this.txtNombre.requestFocus();
+        } else if (tel.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "El telefono no debe estr vacio");
+            this.txtTelefono.requestFocus();
+        } else if (correo.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "El correo no deben estar vacio");
+            this.txtCorreo.requestFocus();
         } else {
+            this.cantidadContactos=contactos.size();
             Contacto contacto = new Contacto(nombre, tel, correo);
             contactos.add(contacto);
-            System.out.println("contactos"+contactos);
-            cargarLista();
+            if(contactos.size()==cantidadContactos){
+                JOptionPane.showMessageDialog(rootPane, "El contacto ya existe");
+            }else{
+                cargarLista();
             limpiar();
             JOptionPane.showMessageDialog(rootPane, "Se agrego el contacto correctamente");
+            }
+            this.txtNombre.requestFocus();
         }
 
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -200,6 +210,7 @@ public class EjercicioExtra2 extends javax.swing.JFrame {
             contactoListaModelo.setElementAt(contactoSeleccionado, indiceSeleccionado);
             limpiar();
             JOptionPane.showMessageDialog(rootPane, "Se edito el contacto correctamente");
+            this.txtNombre.requestFocus();
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se selecciono ningún contacto");
         }
@@ -213,6 +224,7 @@ public class EjercicioExtra2 extends javax.swing.JFrame {
             contactoListaModelo.removeElement(contactoSeleccionado);
             limpiar();
             JOptionPane.showMessageDialog(rootPane, "Se elimino el contacto correctamente");
+            this.txtNombre.requestFocus();
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se selecciono ningún contacto");
         }
@@ -258,9 +270,10 @@ public class EjercicioExtra2 extends javax.swing.JFrame {
         this.txtTelefono.setText("");
         this.txtCorreo.setText("");
     }
-    
-    public void cargarLista(){
-        for(Contacto c: contactos){
+
+    public void cargarLista() {
+        contactoListaModelo.removeAllElements();
+        for (Contacto c : contactos) {
             contactoListaModelo.addElement(c);
         }
     }

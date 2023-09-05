@@ -124,9 +124,6 @@ public class Ejercicio4 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniProductosMouseClicked
-        //this.escritorio.add(this.jInternalFrame1);
-
-        //this.jInternalFrame1.setVisible(true);
 
     }//GEN-LAST:event_mniProductosMouseClicked
 

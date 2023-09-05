@@ -216,6 +216,7 @@ public class ifrmGestionDeProductos extends javax.swing.JInternalFrame {
                 it.remove();
                 JOptionPane.showMessageDialog(rootPane, "Producto eliminado");
                 this.btnEliminar.setEnabled(false);
+                this.txtCodigo.requestFocus();
             }
         }
 
@@ -229,6 +230,7 @@ public class ifrmGestionDeProductos extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (this.txtCodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Ingrese un código");
+            this.txtCodigo.requestFocus();
         } else {
             for (Producto p : Ejercicio4.productos) {
                 if (this.txtCodigo.getText().equals(String.valueOf(p.getCodigo()))) {
@@ -259,15 +261,19 @@ public class ifrmGestionDeProductos extends javax.swing.JInternalFrame {
                         p.setRubro((Categoria) this.cbxRubros.getSelectedItem());
                         Ejercicio4.productos.add(p);
                         JOptionPane.showMessageDialog(rootPane, "Se agrego un nuevo producto");
+                        this.txtCodigo.requestFocus();
                         limpiar();
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Ingrese stock");
+                        this.txtStock.requestFocus();
                     }
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Ingrese Precio");
+                    this.txtPrecio.requestFocus();
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Ingrese descripción");
+                this.txtDescripcion.requestFocus();
             }
         }
         for (Producto s : Ejercicio4.productos) {
@@ -295,6 +301,7 @@ public class ifrmGestionDeProductos extends javax.swing.JInternalFrame {
         
         Ejercicio4.productos.add(p);
         JOptionPane.showMessageDialog(rootPane, "Se agrego un nuevo producto");
+        this.txtCodigo.requestFocus();
         for (Producto s : Ejercicio4.productos) {
             System.out.println("listado productos" + s);
         }

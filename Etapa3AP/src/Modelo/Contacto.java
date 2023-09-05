@@ -5,16 +5,20 @@
  */
 package Modelo;
 
-import java.util.Objects;
+
 
 /**
  *
  * @author Hugo
  */
-public class Contacto {
+public class Contacto implements Comparable<Contacto> {
+
     private String nombre;
     private String telefono;
     private String correo;
+
+    public Contacto() {
+    }
 
     public Contacto(String nombre, String telefono, String correo) {
         this.nombre = nombre;
@@ -47,46 +51,13 @@ public class Contacto {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.nombre);
-        hash = 67 * hash + Objects.hashCode(this.telefono);
-        hash = 67 * hash + Objects.hashCode(this.correo);
-        return hash;
+    public int compareTo(Contacto o) {
+        return o.correo.compareTo(this.correo);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Contacto other = (Contacto) obj;
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
-        if (!Objects.equals(this.correo, other.correo)) {
-            return false;
-        }
-        return true;
-    }
-
-    
-    
-    
 
     @Override
     public String toString() {
         return "Contacto{" + "nombre=" + nombre + ", telefono=" + telefono + ", correo=" + correo + '}';
     }
-    
-    
+
 }
