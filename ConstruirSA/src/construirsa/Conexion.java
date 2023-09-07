@@ -16,9 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
 
-    private static String url = "jdbc:mariadb://localhost/obrador";
+    private static String url = "jdbc:mariadb://localhost/";
     private static String usuario = "root";
     private static String password = "";
+    private static String db = "obrador";
     private static Conexion con = null;
 
     private Conexion() {
@@ -35,7 +36,7 @@ public class Conexion {
             con = new Conexion();
         }
         try {
-            conn = DriverManager.getConnection(url, usuario, password);
+            conn = DriverManager.getConnection(url+db, usuario, password);
             JOptionPane.showMessageDialog(null, "Conexion exitosa");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");
