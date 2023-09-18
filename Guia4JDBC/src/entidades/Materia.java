@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package entidades;
 
 /**
  *
- * @author Grupo2
+ * @author Hugo
  */
 public class Materia {
 
@@ -17,7 +17,6 @@ public class Materia {
     private boolean estado;
 
     public Materia() {
-        this.idMateria=-1;
     }
 
     public Materia(int idMateria, String nombre, int año, boolean estado) {
@@ -28,7 +27,6 @@ public class Materia {
     }
 
     public Materia(String nombre, int año, boolean estado) {
-        this.idMateria=-1;
         this.nombre = nombre;
         this.año = año;
         this.estado = estado;
@@ -68,7 +66,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", a\u00f1o=" + año + ", estado=" + estado + '}';
+        return nombre + ", " + año;
     }
 
     

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package guia4jdbc;
+package accesoADatos;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,9 +15,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
-import modelo.Alumno;
-import modelo.Inscripcion;
-import modelo.Materia;
+import entidades.Alumno;
+import entidades.Inscripcion;
+import entidades.Materia;
 
 /**
  *
@@ -36,7 +36,7 @@ public class Guia4JDBC {
 
         //b) Establecer la conexión a la base de datos previamente creada.
         con = Conexion.getConexion();
-
+        
         //c) Insertar 3 alumnos
         a1 = new Alumno(99878911, "ola", "claudio", LocalDate.of(1977, 7, 4), true);
         a2 = new Alumno(88888888, "afas", "cristian", LocalDate.of(1989, 5, 15), true);
@@ -110,12 +110,12 @@ public class Guia4JDBC {
 
         }
         //e) Inscribir a los 3 alumnos en 2 materias cada uno.
-        Inscripcion i1 = new Inscripcion(5, a1.getIdAlumno(), portugues.getIdMateria());
-        Inscripcion i2 = new Inscripcion(7, a1.getIdAlumno(), eda.getIdMateria());
-        Inscripcion i3 = new Inscripcion(4, a2.getIdAlumno(), portugues.getIdMateria());
-        Inscripcion i4 = new Inscripcion(8, a2.getIdAlumno(), web1.getIdMateria());
-        Inscripcion i5 = new Inscripcion(9, a3.getIdAlumno(), eda.getIdMateria());
-        Inscripcion i6 = new Inscripcion(10, a3.getIdAlumno(), web2.getIdMateria());
+        Inscripcion i1 = new Inscripcion(5, a1, portugues);
+        Inscripcion i2 = new Inscripcion(7, a1, eda);
+        Inscripcion i3 = new Inscripcion(4, a2, portugues);
+        Inscripcion i4 = new Inscripcion(8, a2, web1);
+        Inscripcion i5 = new Inscripcion(9, a3, eda);
+        Inscripcion i6 = new Inscripcion(10, a3, web2);
 
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
 
@@ -134,9 +134,9 @@ public class Guia4JDBC {
             Inscripcion inscripto = it3.next();
             try {
                 ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, inscripto.getNota());
-                ps.setInt(2, inscripto.getIdAlumno());
-                ps.setInt(3, inscripto.getIdMateria());
+                ps.setDouble(1, inscripto.getNota());
+                ps.setInt(2, inscripto.getAlumno().getIdAlumno());
+                ps.setInt(3, inscripto.getMateria().getIdMateria());
 
                 ps.executeUpdate();
                 rs = ps.getGeneratedKeys();

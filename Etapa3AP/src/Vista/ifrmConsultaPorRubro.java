@@ -55,6 +55,11 @@ public class ifrmConsultaPorRubro extends javax.swing.JInternalFrame {
                 cbxRubrosItemStateChanged(evt);
             }
         });
+        cbxRubros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxRubrosActionPerformed(evt);
+            }
+        });
 
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,20 +120,22 @@ public class ifrmConsultaPorRubro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cbxRubrosItemStateChanged
 
+    private void cbxRubrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRubrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxRubrosActionPerformed
+
     public  void cargarComboBoxRubros(){
         for(Categoria cat: Categoria.values()){
             this.cbxRubros.addItem(cat);
         }
-        
-       
     }
+    
     public void cargarDatosSegunCategoria() {
         for (Producto p : Ejercicio4.productos) {
             if (this.cbxRubros.getSelectedItem().equals(p.getRubro())) {
                 model.addRow(new Object[]{p.getCodigo(), p.getDescripcion(), p.getPrecio(), p.getStock()});
             }
         }
-
     }
 
     public void eliminarFilas() {

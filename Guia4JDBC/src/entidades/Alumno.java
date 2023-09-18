@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package entidades;
 
 import java.time.LocalDate;
 
 /**
  *
- * @author Grupo2
+ * @author Hugo
  */
 public class Alumno {
 
@@ -21,7 +21,6 @@ public class Alumno {
     private boolean estado;
 
     public Alumno() {
-        this.idAlumno=-1;
     }
 
     public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
@@ -34,7 +33,6 @@ public class Alumno {
     }
 
     public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
-        this.idAlumno=-1;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -92,6 +90,6 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", estado=" + estado + '}';
+        return dni + ", " + apellido + ", " + nombre + ", " + fechaNacimiento + ", " + estado ;
     }
 }
